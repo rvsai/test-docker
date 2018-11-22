@@ -38,6 +38,64 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+		<plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <noCache>true</noCache>
+
+                    <imageName>${docker.image.prefix}/${project.artifactId}:${envname}-${botfactory.version}
+                    </imageName>
+                    <dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                        <configuration>
+                            <skipDockerBuild>false</skipDockerBuild>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>tag-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>tag</goal>
+                        </goals>
+                        <configuration>
+                            <skipDockerTag>false</skipDockerTag>
+                            <image>${docker.image.prefix}/${project.artifactId}:${envname}-${botfactory.version}
+                            </image>
+                            <newName>${docker.image.prefix}/${project.artifactId}:${envname}-${botfactory.version}
+                            </newName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>push-image</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                        <configuration>
+                            <serverId>docker-hub</serverId>
+                            <skipDockerPush>false</skipDockerPush>
+                            <imageName>${docker.image.prefix}/${project.artifactId}:${envname}-${botfactory.version}
+                            </imageName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
