@@ -47,6 +47,8 @@
 
                     <imageName>testdocker</imageName>
                     <dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
+		<dockerHost>localhost:2375</dockerHost> 
+
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
