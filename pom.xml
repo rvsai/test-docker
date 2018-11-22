@@ -19,12 +19,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-		<dependency>
-		    <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		    <version>4.12</version>
-		    <scope>test</scope>
-		</dependency>
+		
         
     </dependencies>
 
@@ -47,7 +42,6 @@
 
                     <imageName>testdocker</imageName>
                     <dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
-		<dockerHost>localhost:2375</dockerHost> 
 
                     <resources>
                         <resource>
@@ -77,7 +71,7 @@
                         <configuration>
                             <skipDockerTag>false</skipDockerTag>
                             <image>testdocker</image>
-                            <newName>testdocker1
+                            <newName>testdocker
                             </newName>
                         </configuration>
                     </execution>
@@ -90,7 +84,7 @@
                         <configuration>
                             <serverId>docker-hub</serverId>
                             <skipDockerPush>false</skipDockerPush>
-                            <imageName>testdocker1
+                            <imageName>testdocker
                             </imageName>
                         </configuration>
                     </execution>
