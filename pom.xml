@@ -38,15 +38,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-		<plugin>
+            <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <configuration>
                     <noCache>true</noCache>
 
-                    <imageName>${docker.image.prefix}/${project.artifactId}:${envname}-${botfactory.version}
-                    </imageName>
+                    <imageName>testdocker</imageName>
                     <dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
@@ -75,9 +74,8 @@
                         </goals>
                         <configuration>
                             <skipDockerTag>false</skipDockerTag>
-                            <image>${docker.image.prefix}/${project.artifactId}:${envname}-${botfactory.version}
-                            </image>
-                            <newName>${docker.image.prefix}/${project.artifactId}:${envname}-${botfactory.version}
+                            <image>testdocker</image>
+                            <newName>testdocker1
                             </newName>
                         </configuration>
                     </execution>
@@ -90,7 +88,7 @@
                         <configuration>
                             <serverId>docker-hub</serverId>
                             <skipDockerPush>false</skipDockerPush>
-                            <imageName>${docker.image.prefix}/${project.artifactId}:${envname}-${botfactory.version}
+                            <imageName>testdocker1
                             </imageName>
                         </configuration>
                     </execution>
