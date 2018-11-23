@@ -40,14 +40,14 @@
                 <configuration>
                     <noCache>true</noCache>
 
-                    <imageName>testdocker</imageName>
+                    <imageName>rundockertest</imageName>
                     <dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
 
                     <resources>
                         <resource>
-                            <targetPath>/</targetPath>
+                            <targetPath>librar/rundockertest</targetPath>
                             <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.jar</include>
+                            <include>rundockertest.jar</include>
                         </resource>
                     </resources>
                 </configuration>
@@ -70,8 +70,8 @@
                         </goals>
                         <configuration>
                             <skipDockerTag>false</skipDockerTag>
-                            <image>testdocker</image>
-                            <newName>testdocker
+                            <image>rundockertest</image>
+                            <newName>rundockertest
                             </newName>
                         </configuration>
                     </execution>
@@ -84,7 +84,7 @@
                         <configuration>
                             <serverId>docker-hub</serverId>
                             <skipDockerPush>false</skipDockerPush>
-                            <imageName>testdocker
+                            <imageName>rundockertest
                             </imageName>
                         </configuration>
                     </execution>
